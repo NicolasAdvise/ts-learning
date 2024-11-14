@@ -1,7 +1,7 @@
 export class Vehicle {
-    private model: string
-    readonly make: string
-    protected year: number
+    public model: string
+    public make: string
+    public year: number
 
     public constructor(model: string, make: string, year: number) {
         this.model = model
@@ -38,5 +38,10 @@ export class RentalVehicle extends Vehicle {
         console.log("Ce véhicule est une "+this.make+" "+this.model+" construite en "+this.year+ "au prix de "+this.dailyRate+"€ par jour")
 
     }
-    //Le private empêche d'accéder à la valeur du fait que nous sommes dans une classe dérivée et retourne une erreur à la compilation.
+
+    public calculateTotalRentalCost( numberOfDays: number, reduction: number = 0):number {
+        const rentalGross: number = this.dailyRate * numberOfDays ;
+        const percentage: number = reduction / 100
+        return rentalGross - rentalGross * percentage ;
+    }
 }
