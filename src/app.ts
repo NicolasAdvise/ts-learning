@@ -3,3 +3,4 @@ function welcomeMessage(): string {
 }
 
 console.log(welcomeMessage());
+
