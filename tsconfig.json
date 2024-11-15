@@ -3,16 +3,18 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "outDir": "./dist",          // Sortir les fichiers dans dist
-    "rootDir": "./src",          // Racine des fichiers TS
+    "outDir": "./dist",
+    "rootDir": "./src",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
-    "declaration": true,         // Générer des fichiers .d.ts
-    "sourceMap": true            // Générer des fichiers .map pour faciliter le débogage
+    "declaration": true,
+    "sourceMap": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
