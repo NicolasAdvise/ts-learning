@@ -11,4 +11,3 @@ const v6 = new Vehicle("Lada","Phase 1",1977);
 
 const vehicles = [v1, v2, v3, v4, v5, v6];
 const filteredList = filterByYear(vehicles, 2000)
-console.log(filteredList);
