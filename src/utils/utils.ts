@@ -27,3 +27,7 @@ export function printVehicleInfo (vehicle : Vehicle | Car | Truck) : string {
     }
     return text;
 }
+
+export function filterByYear<T extends Vehicle>(vehicles: T[],year: number): T[] {
+    return vehicles.filter(vehicle => vehicle.year > year);
+}
