@@ -1,13 +1,37 @@
-import {Vehicle} from "./classes/Vehicle";
-import {Car, Truck } from "./types/types";
-import {RentalCostForVehicle, printVehicleInfo, filterByYear} from "./utils/utils";
+import {Vehicle} from "./classes/Vehicle.js";
 
-const v1 = new Vehicle("Renault","Clio",2004);
-const v2 = new Vehicle("Peugeot","208",2009);
-const v3 = new Vehicle("Toyota","Yaris",2020);
-const v4: Car = Object.assign(new Vehicle("Opel","Corsa",1999), { numberOfDoors: 4});
-const v5: Truck = Object.assign(new Vehicle("Renault", "Traffic", 2015), { cargoCapacity: 350});
-const v6 = new Vehicle("Lada","Phase 1",1977);
+const vehicles: Vehicle[] = [];
 
-const vehicles = [v1, v2, v3, v4, v5, v6];
-const filteredList = filterByYear(vehicles, 2000)
+const form = document.getElementById('vehicle-form') as HTMLFormElement;
+const makeInput = document.getElementById('make') as HTMLInputElement;
+const modelInput = document.getElementById('model') as HTMLInputElement;
+const yearInput = document.getElementById('year') as HTMLInputElement;
+const vehicleList = document.getElementById('vehicle-list') as HTMLUListElement;
+
+const displayVehicles = () => {
+    vehicleList.innerHTML = '';
+    vehicles.forEach(vehicle => {
+        const li = document.createElement('li');
+        li.textContent = `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
+        vehicleList.appendChild(li);
+    });
+};
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!makeInput || !modelInput || !yearInput || !vehicleList) {
+        console.error("Un ou plusieurs éléments DOM sont manquants.");
+        return;
+    }
+
+    const make = makeInput.value;
+    const model = modelInput.value;
+    const year = parseInt(yearInput.value);
+
+    const newVehicle = new Vehicle(make, model, year);
+    vehicles.push(newVehicle);
+
+    form.reset();
+    displayVehicles();
+});
