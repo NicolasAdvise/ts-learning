@@ -1,30 +1,4 @@
-export class Vehicle {
-    public model: string
-    public make: string
-    public year: number
-
-    public constructor(model: string, make: string, year: number) {
-        this.model = model
-        this.make = make
-        this.year = year
-    }
-
-    public getModel(): string {
-        return this.model
-    }
-
-    public getMake(): string {
-        return this.make
-    }
-
-    public getYear(): number {
-        return this.year
-    }
-
-    public getVehicleInfo(){
-        console.log("Ce véhicule est une "+this.make+" "+this.model+" construite en "+this.year)
-    }
-}
+import {Vehicle} from "./Vehicle";
 
 export class RentalVehicle extends Vehicle {
     public dailyRate: number;
